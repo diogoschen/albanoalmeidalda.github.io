@@ -21,12 +21,12 @@ innerBox.forEach((val, i) => {
     });
 });
 
-button.addEventListener('click', (e) => {
-    form[2][0].value = form[0].elements[0].value;
-    form[2][1].value = form[1].elements[0].value;
-    form[2].submit();
-});
+// button.addEventListener('click', (e) => {
+//     form[2][0].value = form[0].elements[0].value;
+//     form[2][1].value = form[1].elements[0].value;
+//     form[2].submit();
+// });
 
-if (window.location.href.split('s')[1][0] === 'u') {
-    window.location = '/';
-};
+// if (window.location.href.split('s')[1][0] === 'u') {
+//     window.location = '/';
+// };
