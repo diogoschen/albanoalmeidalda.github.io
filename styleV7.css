@@ -169,12 +169,12 @@ input {
     width: 30px;
     height: 18px;
     position: absolute;
-    padding: 2px;
+    padding: 2px 4px 0 4px;
     text-align: center;
     background: #c9af81;
     border-radius: 20px;
     font-size: .7em;
-    margin-left: -17px;
+    margin-left: -19px;
 }
 
 .bubbleWrap {
