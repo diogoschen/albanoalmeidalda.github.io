@@ -160,6 +160,10 @@ button:active {
     display: none;
 }
 
+input {
+    width: 90%;
+}
+
 .bubble {
     width: 18px;
     height: 18px;
@@ -170,23 +174,14 @@ button:active {
     border-radius: 100%;
     font-size: .7em;
     margin-left: -10px;
-    z-index: -1;
-    opacity: 1;
-    /* margin-left: 16%; */
-    /* margin-left: 77%; */
 }
 
 .bubbleWrap {
     z-index: -1;
     margin: 0 auto;
     margin-top: -10px;
-    width: 113px;
+    width: 80%;
     height: 20px;
     position: relative;
     margin-bottom: 5px;
-    text-align: center;
-}
-
-input {
-    width: 129px;
 }
