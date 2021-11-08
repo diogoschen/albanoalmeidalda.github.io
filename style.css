@@ -159,3 +159,30 @@ button:active {
 .inputhidden {
     display: none;
 }
+
+.bubble {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    padding: 2px;
+    text-align: center;
+    background: #c9af81;
+    border-radius: 100%;
+    font-size: .7em;
+    margin-left: -10px;
+    z-index: -1;
+    opacity: 1;
+    /* margin-left: 16%; */
+    /* margin-left: 77%; */
+}
+
+.bubbleWrap {
+    z-index: -1;
+    margin: 0 auto;
+    margin-top: -10px;
+    width: 113px;
+    height: 20px;
+    position: relative;
+    margin-bottom: 5px;
+    text-align: center;
+}
