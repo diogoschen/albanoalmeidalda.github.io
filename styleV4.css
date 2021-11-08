@@ -144,6 +144,7 @@ button:active {
     margin-top: 2px;
     font-size: .7em;
     z-index: -1;
+    display: none;
 }
 
 .formhidden {
