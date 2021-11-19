@@ -1,0 +1,640 @@
+*:focus {
+    /* outline: 1px solid red !important; */
+    outline: none;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    /* background: url('img/1.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: .25s;
+}
+
+h1 {
+    font-size: 3.4rem;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+}
+
+header svg {
+    width: 80px;
+    fill: #fff;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 0 auto 0;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* JANELA COM FORM DO NOME DO UTILIZADOR */
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid #fff;
+    text-align: center;
+    background: none;
+    color: #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+#nameForm, #nameInput, #nameForm label {
+    font-size: 3.3rem;
+}
+
+.nameWindow button {
+    background: rgb(0, 0, 0, .2);
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 100px;
+    font-size: .8rem;
+    padding: .7rem 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 0 auto;
+    color: #fff;
+}
+
+.nameWindow button:focus {
+    background: rgb(202, 202, 202, .15);
+    outline: none;
+}
+
+#nameForm label {
+    display: inline-block;
+    margin: 20px 0;
+}
+
+label {
+    color: #fff;
+}
+
+form {
+    margin: 0 auto;
+}
+
+#nameForm {
+    max-width: 600px;
+    width: 65%;
+}
+
+.nameWindow {
+    margin: auto;
+}
+
+.nameWindow, .mainWindow {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, .15);
+    background: rgba(0, 0, 0, .15);
+}
+
+.nameWindow, .mainWindow, header, .mainFocus, #focusForm {
+    opacity: 0;
+    visibility: hidden;
+    transition: linear .5s;
+}
+
+/* JANELA SECUNDÁRIA COM O "DESKTOP" DO UTILIZADOR */
+
+.mainWindow {
+    margin: auto 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    align-content: space-around;
+}
+
+#focusForm, #focusInput {
+    font-size: 2.18rem;
+}
+
+#focusForm {
+    width: 60%;
+}
+
+.greetings {
+    padding: 230px 0 0 0;
+    margin: auto auto;
+    color: #fff;
+}
+
+.clock {
+    font-size: 10rem;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    width: 100%;
+}
+
+/* MAIN TASK AREA */
+
+.focus {
+    margin: 0 0 auto 0;
+    position: relative;
+}
+
+.mainFocus {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: -10px;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.taskDay {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.taskLine {
+    display: inline-block;
+    font-size: 2.1rem;
+}
+
+.taskLine:focus-within .inputContainer,
+.taskLine:focus-within button,
+.taskLine:hover .inputContainer,
+.taskLine:hover button {
+    opacity: 1;
+}
+
+/* delete focus  */
+.taskLine button {
+    opacity: 0;
+    transition: .25s;
+    position: relative;
+    font-size: 1rem;
+    top: -6px;
+}
+
+.taskLine button span {
+    position: relative;
+    top: .02rem;
+    left: .00001rem;
+}
+
+.removeBtn {
+    background: rgb(0, 0, 0, .2);
+    border: 2px solid #fff;
+    border-radius: 2px;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 0;
+    display: inline-block;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.task {
+    margin: 0 10px;
+}
+
+.taskLine .inputContainer:hover,
+.taskLine .inputContainer:focus-within,
+.taskLine .inputContainer:hover,
+.taskLine .inputContainer:focus-within {
+    background: rgba(255, 255, 255, .2);
+}
+
+.inputContainer {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.inputContainer,
+.inputSecundary {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: opacity .25s;
+}
+
+.taskComplete {
+    opacity: .5;
+}
+
+.inputContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.inputSecundary input:checked~.checkmark:after,
+.inputContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+.inputSecundary .checkmark:after,
+.inputContainer .checkmark:after {
+    top: 3%;
+    left: 27%;
+    width: 23%;
+    height: 50%;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* QUOTE */
+
+.quote {
+    color: #fff;
+    margin: 10px 0;
+    width: 50%;
+    font-size: 1.2rem;
+    position: relative;
+    transition: .3s;
+}
+
+.quote:hover .quoteText {
+    bottom: 20px;
+}
+
+.quote:hover .quoteAuthor {
+    bottom: 0;
+    opacity: 1;
+}
+
+.quoteText {
+    bottom: 0;
+}
+
+.quoteAuthor, .quoteText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: .3s;
+}
+
+.quoteAuthor {
+    opacity: 0;
+    bottom: 10px;
+    font-size: .9rem;
+    color: rgb(192, 189, 189);
+}
+
+/* CORNERS */
+
+.up {
+    position: absolute;
+    top: 0;
+}
+
+.left {
+    position: absolute;
+    left: 0;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
+
+.down {
+    position: absolute;
+    bottom: 0;
+}
+
+/* METEROLOGIA */
+
+.weather {
+    color: #fff;
+    width: 100px;
+    height: 60px;
+    padding: 0 20px;
+    text-align: right;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.weatherImg {
+    padding: 0;
+    width: 50px;
+    margin-right: -10px;
+}
+
+.weatherLoc {
+    margin: -10px 0 0 0;
+    padding: 0;
+    width: 100%;
+    font-size: .8rem;
+}
+
+/* LINKS */
+
+.links {
+    width: 350px;
+    height: 60px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#searchForm {
+    width: 100%;
+    position: relative;
+}
+
+#searchForm:focus input,
+#searchForm:hover input {
+    opacity: 1;
+}
+
+#searchForm input {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0 0 0 25px;
+    opacity: 0;
+    height: 50px;
+    transition: .2s;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 15px;
+    fill: #fff;
+    cursor: pointer;
+    transform: rotate(-15deg);
+    z-index: -1;
+}
+
+.linkList button {
+    display: inline;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 20px;
+    color: #fff;
+    background: none;
+    transition: all .25s;
+}
+
+.linkList button:focus,
+.linkList button:hover,
+.todo button:focus,
+.todo button:hover {
+    text-shadow: 0 0px 10px #000;
+}
+
+.linkList ul {
+    position: absolute;
+    top: -500px;
+    text-align: left;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.75);
+    width: 250px;
+    margin-left: 10px;
+    border-radius: 4px;
+    padding: 15px 20px;
+    transition: .3s;
+    opacity: 0;
+}
+
+.linkList ul::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    top: -5px;
+    left: 15px;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.75);
+    transform: rotate(45deg);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.linkList li {
+    padding: 10px;
+}
+
+.linkList a {
+    text-decoration: none;
+    opacity: .5;
+    font-size: inherit;
+    color: #fff;
+}
+
+.linkList a:focus, .linkList a:hover {
+    opacity: 1;
+}
+
+/* Todo list */
+
+.todo button:nth-child(1) {
+    background: none;
+    border: none;
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.todo ul {
+    width: 300px;
+    min-height: 30vh;
+    max-height: 80vh;
+    position: absolute;
+    border-radius: 5px;
+    bottom: -100vh;
+    right: 10px;
+    background: rgba(0, 0, 0, .75);
+    list-style: none;
+    padding: 10px;
+    text-align: left;
+    overflow-y: auto;
+    transition: .3s;
+}
+
+
+.todo li {
+    padding: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.todo li>span {
+    text-align: left;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.todo form {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.todo input {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+    font-size: inherit;
+    height: 30px;
+    padding: 0 0 10px 0;
+}
+
+.todo .removeBtn {
+    width: 20px;
+    height: 20px;
+    font-size: .855rem;
+    padding-bottom: 2px;
+}
+
+
+.inputSecundary {
+    width: 18px;
+    height: 18px;
+}
+
+
+.inputSecundary input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.inputSecundary input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Settings */
+
+.settings button {
+    padding: 20px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    /* background-color: black; */
+}
+
+.settings svg {
+    fill: #fff;
+    width: 18px;
+    transition: 1s;
+    z-index: -1;
+    position: relative;
+}
+
+.settings button:hover svg {
+    transform: rotate(360deg);
+}
+
+.settingsBox {
+    position: absolute;
+    bottom: -100vh;
+    width: 200px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.75);
+    left: 10px;
+    border-radius: 5px;
+    text-align: left;
+    transition: .5s;
+}
+
+.settingsBox>button {
+    border: 0;
+    padding: 10px;
+    margin-bottom: 5px;
+    background: none;
+    color: #fff;
+    font-size: inherit;
+    opacity: 0.5;
+}
+
+.settingsBox>button:hover {
+    opacity: 1;
+}
+
+@media(max-height:480px) {
+    .clock {
+        display: none;
+    }
+
+    .greetings {
+        padding: 50px 0 0 0;
+    }
+}
