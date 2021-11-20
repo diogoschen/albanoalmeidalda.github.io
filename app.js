@@ -339,7 +339,7 @@ changeBg.addEventListener('click', () => {
             bodyChange.style.background = 'none'
         }, 250);
         document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
-    }, 250)
+    }, 500)
     localStorage.bgChosen = clickBg
 })
 
