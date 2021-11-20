@@ -70,7 +70,7 @@ function getQuote(quote, author) {
         })
         .then((data) => {
             const randomNumber = Math.round(Math.random() * data.length, 0)
-            quote.innerHTML = `"${data[randomNumber].text}"`;
+            quote.innerHTML = `&ldquo;${data[randomNumber].text}&rdquo;`;
             if (data[randomNumber].author) {
                 author.innerHTML = `${data[randomNumber].author}`
             };
