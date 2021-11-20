@@ -665,8 +665,4 @@ form {
         width: 65%;
     }
 
-    .focus:focus-within+.quote {
-        display: none;
-    }
-
 }

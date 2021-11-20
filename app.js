@@ -34,6 +34,7 @@ const settingsBox = document.querySelector('.settingsBox')
 const settingsBtn = document.querySelector('.settings button')
 const clearStorage = document.querySelector('#clear')
 const changeBg = document.querySelector('#changeBg')
+const quote = document.querySelector('.quote')
 let listOfTasks = [];
 let clickTask = localStorage.isFocusChecked === 'true' ? 1 : 0;
 let clickBg = localStorage.bgChosen ? parseInt(localStorage.bgChosen) : 1
@@ -224,6 +225,12 @@ document.addEventListener('click', e => {
         transitionElement(settingsBox, 0)
         console.log('hey')
     }
+    if (e.target.id.indexOf('focus') > -1) {
+        navigator.userAgent.indexOf('Mobile') > 0 ? transitionElement(quote, 0) : ""
+    }
+    else {
+        navigator.userAgent.indexOf('Mobile') > 0 ? transitionElement(quote, 1) : ""
+    }
 })
 
 function taskCreation() {
@@ -324,3 +331,4 @@ changeBg.addEventListener('click', () => {
     document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
     localStorage.bgChosen = clickBg
 })
+
