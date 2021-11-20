@@ -1,6 +1,7 @@
 // Iniciação de variáveis
 
 const header = document.querySelector('header')
+const bodyChange = document.querySelector('.bodyChange')
 const nameForm = document.querySelector('#nameForm')
 const focusForm = document.querySelector('#focusForm')
 const nameWindow = document.querySelector('.nameWindow')
@@ -331,8 +332,10 @@ clearStorage.addEventListener('click', () => {
 })
 
 changeBg.addEventListener('click', () => {
+    bodyChange.style.background = '#000'
     clickBg > 3 ? clickBg = 1 : clickBg++
     document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
+    bodyChange.style.background = 'none'
     localStorage.bgChosen = clickBg
 })
 
@@ -342,3 +345,5 @@ locWeather.addEventListener('submit', (e) => {
     localStorage.setItem('localWeather', e.target[0].value)
     e.target[0].value = ''
 })
+
+const bodySudo = document.querySelector('body::before').style.backgroundColor = "#fff"
