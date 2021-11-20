@@ -194,7 +194,7 @@ removeBtn.addEventListener('click', (e) => {
 
 // lista de tarefas
 document.addEventListener('click', e => {
-    console.dir(e)
+
     if (e.target === linkBtn || e.target === linkUl || e.target.parentElement === linkUl) {
         linkUl.style.top = '40px';
         transitionElement(linkUl, 1)
@@ -224,7 +224,6 @@ document.addEventListener('click', e => {
     else {
         settingsBox.style.bottom = '-100vh'
         transitionElement(settingsBox, 0)
-        console.log('hey')
     }
     if (e.target.id.indexOf('focus') > -1) {
         navigator.userAgent.indexOf('Mobile') > 0 ? transitionElement(quote, 0) : ""
