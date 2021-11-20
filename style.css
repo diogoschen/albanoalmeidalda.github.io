@@ -643,7 +643,7 @@ form {
 
 }
 
-@media (max-width:750px) and (max-aspect-ratio:3/4) {
+@media (max-width:750px) {
     .clock {
         font-size: 8rem;
     }
