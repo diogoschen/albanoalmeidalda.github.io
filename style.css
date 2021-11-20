@@ -661,4 +661,8 @@ form {
         margin: 0;
     }
 
+    .quote {
+        width: 65%;
+    }
+
 }
