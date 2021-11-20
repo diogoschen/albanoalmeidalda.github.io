@@ -17,8 +17,10 @@ const checkBtn = document.querySelector('.inputContainer')
 const removeBtn = document.querySelector('.removeBtn')
 const timeDay = document.querySelector('#timeDay')
 const weatherBox = document.querySelector('.weather')
+const locWeather = document.querySelector('#locWeather')
 const weatherTemp = document.querySelector('.weatherTemp')
-const img = document.querySelector('.weatherImg')
+const weatherLocText = document.querySelector('.weatherLoc')
+const imgWeather = document.querySelector('.weatherImg')
 const linkBtn = document.querySelector('.linkList button')
 const linkUl = document.querySelector('.linkList ul')
 const inputTask = document.querySelector('.todo input')
@@ -42,16 +44,17 @@ document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
 
 // API para o estado do tempo
 
-function getWeather() {
+function getWeather(loc = 'Lisboa') {
     const apikey = 'c3e2e26d276d81e70a8b3409c17c563d'
-    const city = 'Lisboa'
+    const city = loc
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}`)
         .then((resp) => {
             return resp.json()
         })
         .then((data) => {
-            img.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
+            imgWeather.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             weatherTemp.innerHTML = Math.round(data.main.temp, 0) + '&#176'
+            weatherLocText.innerHTML = loc
         })
         .catch(e => {
             console.log(e)
@@ -111,7 +114,7 @@ function transitionElement(element, state, display = '') {
 
 function init() {
     getQuote(quoteText, quoteAuthor)
-    getWeather()
+    getWeather(localStorage.localWeather)
     if (localStorage.name) {
         transitionElement(nameWindow, 0, 'none')
         transitionElement(mainWindow, 1)
@@ -333,3 +336,8 @@ changeBg.addEventListener('click', () => {
     localStorage.bgChosen = clickBg
 })
 
+locWeather.addEventListener('submit', (e) => {
+    e.preventDefault()
+    getWeather(e.target[0].value)
+    localStorage.setItem('localWeather', e.target[0].value)
+})
