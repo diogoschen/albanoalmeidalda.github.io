@@ -340,4 +340,5 @@ locWeather.addEventListener('submit', (e) => {
     e.preventDefault()
     getWeather(e.target[0].value)
     localStorage.setItem('localWeather', e.target[0].value)
+    e.target[0].value = ''
 })
