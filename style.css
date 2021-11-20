@@ -670,4 +670,8 @@ form {
     .links {
         width: 70%;
     }
+
+    #nameForm label {
+        font-size: 2.9rem;
+    }
 }
