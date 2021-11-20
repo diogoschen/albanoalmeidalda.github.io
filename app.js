@@ -105,7 +105,7 @@ function transitionElement(element, state, display = '') {
     } else {
         element.style.zIndex = -1;
         element.style.visibility = 'hidden'
-        if (display) { setTimeout(() => { element.style.display = display }, 1000) }
+        if (display) { setTimeout(() => { element.remove() }, 1000) }
     }
 }
 
@@ -134,7 +134,7 @@ function init() {
         getTasks()
         setTime()
     } else {
-        transitionElement(nameWindow, 1)
+        transitionElement(nameWindow, 1, 'none')
         transitionElement(header, 1)
         transitionElement(mainWindow, 0)
         localStorage.setItem('secundaryTasks', '')
@@ -151,6 +151,7 @@ nameForm.addEventListener('submit', (e) => {
     transitionElement(header, 0)
     transitionElement(mainWindow, 1)
     transitionElement(focusForm, 1)
+    transitionElement(nameWindow, 0, 'none')
 })
 
 //Preenchimento da tarefa focus
