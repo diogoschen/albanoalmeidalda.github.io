@@ -404,7 +404,7 @@ form {
 /* LINKS */
 
 .links {
-    width: 350px;
+    width: 20%;
     height: 60px;
     display: flex;
     justify-content: left;
@@ -591,8 +591,9 @@ form {
     border: 0;
     background: none;
     cursor: pointer;
-    /* background-color: black; */
+    outline: none;
 }
+
 
 .settings svg {
     fill: #fff;
@@ -602,7 +603,7 @@ form {
     position: relative;
 }
 
-.settings button:hover svg {
+.settings button:focus, svg .settings button:hover svg {
     transform: rotate(360deg);
 }
 
@@ -628,6 +629,7 @@ form {
     opacity: 0.5;
 }
 
+.settingsBox>button:focus,
 .settingsBox>button:hover {
     opacity: 1;
 }
@@ -665,4 +667,7 @@ form {
         width: 65%;
     }
 
+    .links {
+        width: 70%;
+    }
 }
