@@ -334,8 +334,12 @@ clearStorage.addEventListener('click', () => {
 changeBg.addEventListener('click', () => {
     bodyChange.style.background = '#000'
     clickBg > 3 ? clickBg = 1 : clickBg++
-    document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
-    bodyChange.style.background = 'none'
+    setTimeout(() => {
+        setTimeout(() => {
+            bodyChange.style.background = 'none'
+        }, 250);
+        document.body.style.backgroundImage = `url('img/${clickBg}.jpg')`
+    }, 250)
     localStorage.bgChosen = clickBg
 })
 
@@ -345,5 +349,3 @@ locWeather.addEventListener('submit', (e) => {
     localStorage.setItem('localWeather', e.target[0].value)
     e.target[0].value = ''
 })
-
-const bodySudo = document.querySelector('body::before').style.backgroundColor = "#fff"
