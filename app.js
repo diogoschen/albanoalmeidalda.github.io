@@ -156,6 +156,7 @@ nameForm.addEventListener('submit', (e) => {
 //Preenchimento da tarefa focus
 focusForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    navigator.userAgent.indexOf('Mobile') > 0 ? transitionElement(quote, 1) : ""
     localStorage.setItem('focus', e.target[0].value)
     e.target[0].value = '';
     transitionElement(focusForm, 0)
