@@ -3,6 +3,18 @@
     outline: none;
 }
 
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .3);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 7px;
+}
+
+*::-webkit-scrollbar {
+    height: 13px;
+    width: 13px;
+}
+
 body {
     margin: 0 auto;
     padding: 0;
@@ -16,7 +28,7 @@ body {
     background-size: cover;
     background-position: center;
     position: relative;
-    transition: .25s;
+    transition: all .25s;
 }
 
 .bodyChange {
@@ -25,7 +37,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    transition: .25s;
+    transition: all .25s;
 }
 
 h1 {
@@ -133,7 +145,7 @@ form {
 .nameWindow, .mainWindow, header, .mainFocus, #focusForm {
     opacity: 0;
     visibility: hidden;
-    transition: linear .5s;
+    transition: all .25s;
 }
 
 /* JANELA SECUNDÁRIA COM O "DESKTOP" DO UTILIZADOR */
@@ -215,7 +227,7 @@ form {
 /* delete focus  */
 .taskLine button {
     opacity: 0;
-    transition: .25s;
+    transition: all .25s;
     position: relative;
     font-size: 1rem;
     top: -6px;
@@ -268,7 +280,7 @@ form {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    transition: opacity .25s;
+    transition: all .25s;
 }
 
 .taskComplete {
@@ -326,7 +338,7 @@ form {
     width: 50%;
     font-size: 1.2rem;
     position: relative;
-    transition: .3s;
+    transition: all .25s;
 }
 
 .quote:focus-within .quoteText,
@@ -349,7 +361,7 @@ form {
     position: absolute;
     left: 0;
     right: 0;
-    transition: .3s;
+    transition: all .25s;
 }
 
 .quoteAuthor {
@@ -402,12 +414,12 @@ form {
     opacity: 0;
     margin: -3px 0 0 0;
     position: relative;
-    transition: .2s;
+    transition: all .25s;
 }
 
 #locWeather .searchIcon {
     margin: -8px 0 0 0;
-    transition: .2s;
+    transition: all .25s;
 }
 
 #locWeather input {
@@ -416,6 +428,10 @@ form {
     font-size: 1rem;
     padding: 0 0 0 25px;
     height: 50px;
+}
+
+::placeholder {
+    color: #fff;
 }
 
 .weatherImg {
@@ -447,7 +463,6 @@ form {
 /* LINKS */
 
 .links {
-    width: 20%;
     height: 60px;
     display: flex;
     justify-content: left;
@@ -471,7 +486,7 @@ form {
     padding: 0 0 0 25px;
     opacity: 0;
     height: 50px;
-    transition: .2s;
+    transition: all .25s;
 }
 
 .searchIcon {
@@ -483,7 +498,7 @@ form {
     z-index: -1;
 }
 
-.linkList button {
+.links button {
     display: inline;
     border: none;
     font-weight: bold;
@@ -495,53 +510,153 @@ form {
     transition: all .25s;
 }
 
-.linkList button:focus,
-.linkList button:hover,
+
+.links button:focus,
+.links button:hover,
 .todo button:focus,
 .todo button:hover {
     text-shadow: 0 0px 10px #000;
 }
 
+
+.inside::-webkit-scrollbar {
+    width: 0;
+}
+
 .linkList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: 15px 20px 0 20px;
+}
+
+.linkList svg {
+    padding-right: 15px;
+    width: 15px;
+    height: 15px;
+    fill: white;
+}
+
+.linkList li button {
+    padding: 2px 6px;
+    width: auto;
+    border-radius: 10px;
+    color: #333;
+    font-size: .8em;
+    display: inline-block;
+    background-color: #ffffff63;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.linkList {
+    width: 100%;
+    left: 0;
+    position: relative;
+    transition: all .25s;
+    flex-shrink: 0;
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.linkList ul {
+    min-height: 50px;
+}
+
+.linkList button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 100%;
+}
+
+.linkInput {
+    width: 100%;
+    height: 0;
+    position: relative;
+    transition: all .25s;
+    left: 0;
+    top: 0;
+    flex-shrink: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.linkContainer {
     position: absolute;
     top: -500px;
     text-align: left;
-    list-style: none;
     background: rgba(0, 0, 0, 0.75);
     width: 250px;
     margin-left: 10px;
     border-radius: 4px;
-    padding: 15px 20px;
-    transition: .3s;
-    opacity: 0;
+    transition: all .25s;
+    /* opacity: 0; */
+    box-sizing: border-box;
 }
 
-.linkList ul::before {
+.inside {
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.linkContainer::before {
     position: absolute;
     content: '';
     width: 10px;
     height: 10px;
     top: -5px;
     left: 15px;
-    z-index: -1;
-    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+    background: rgba(0, 0, 0, .75);
     transform: rotate(45deg);
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
-.linkList li {
-    padding: 10px;
+.linkContainer li {
+    padding: 10px 0;
 }
 
-.linkList a {
+.linkInput>button {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+#newLink input {
+    border-bottom: 1px solid #fff;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+#newLink button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    display: block;
+    margin: 30px -20px -20px -20px;
+    width: 250px;
+}
+
+.linkContainer a {
     text-decoration: none;
-    opacity: .5;
+    opacity: 1;
     font-size: inherit;
     color: #fff;
 }
 
-.linkList a:focus, .linkList a:hover {
-    opacity: 1;
+.linkContainer a:focus, .linkContainer a:hover {
+    opacity: .5;
 }
 
 /* Todo list */
@@ -569,7 +684,7 @@ form {
     padding: 10px;
     text-align: left;
     overflow-y: auto;
-    transition: .3s;
+    transition: all .25s;
 }
 
 
@@ -641,7 +756,7 @@ form {
 .settings svg {
     fill: #fff;
     width: 18px;
-    transition: 1s;
+    transition: all .25s;
     z-index: -1;
     position: relative;
 }
@@ -659,7 +774,7 @@ form {
     left: 10px;
     border-radius: 5px;
     text-align: left;
-    transition: .5s;
+    transition: all .25s;
 }
 
 .settingsBox>button {
@@ -669,12 +784,12 @@ form {
     background: none;
     color: #fff;
     font-size: inherit;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .settingsBox>button:focus,
 .settingsBox>button:hover {
-    opacity: 1;
+    opacity: .5;
 }
 
 @media(max-height:480px) {
