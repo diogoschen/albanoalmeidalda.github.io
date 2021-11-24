@@ -249,7 +249,7 @@ function newLinkAdd(dns, address, update = true) {
         li.remove()
     })
     btn.innerText = 'x'
-    a.href = address
+    a.href = address.indexOf('http') > -1 ? address : 'https://' + address
     a.innerHTML = linkSVG + dns
     li.append(a)
     li.append(btn)
