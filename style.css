@@ -1,5 +1,8 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 *:focus {
-    /* outline: 1px solid red !important; */
     outline: none;
 }
 
@@ -559,10 +562,6 @@ form {
     max-height: 80vh;
 }
 
-.linkList ul {
-    min-height: 50px;
-}
-
 .linkList button {
     background-color: rgba(0, 0, 0, 0.75);
     color: #fff;
@@ -599,7 +598,7 @@ form {
 }
 
 .inside {
-    overflow-x: hidden;
+    overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: left;

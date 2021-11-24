@@ -244,7 +244,7 @@ function newLinkAdd(dns, address, update = true) {
     const btn = document.createElement('button')
     const a = document.createElement('a')
     btn.addEventListener('click', (e) => {
-        dnsList.splice(dnsList.indexOf(e.path[1].children[0].innerText), 2)
+        dnsList.splice(dnsList.indexOf(e.composedPath()[1].children[0].innerText), 2)
         localStorage.listDNS = dnsList
         li.remove()
     })
@@ -273,9 +273,9 @@ function getLinks() {
 }
 
 function clickedElement(e) {
-    for (let parent of e.path) {
+    for (let parent of e.composedPath()) {
         try {
-            if (parent.className.indexOf('links') >= 0) {
+            if (parent.className.indexOf('links') >= 0 && e.composedPath()[0].id !== 'search') {
                 return 'links'
             }
             if (parent.className.indexOf('settings') >= 0) {
@@ -300,7 +300,7 @@ function closeEverything() {
     settingsBox.style.bottom = '-10vh'
 }
 
-document.addEventListener('click', e => {
+document.addEventListener('click', (e) => {
     let name = clickedElement(e)
     if (name == 'links') {
         closeEverything()
@@ -394,8 +394,8 @@ function addEvent(input, btn, spanText) {
     })
 
     btn.addEventListener('click', (e) => {
-        const notCompleted = listOfTasks.indexOf(e.path[1].children[1].outerText + '/false')
-        const completed = listOfTasks.indexOf(e.path[1].children[1].outerText + '/true')
+        const notCompleted = listOfTasks.indexOf(e.composedPath()[1].children[1].outerText + '/false')
+        const completed = listOfTasks.indexOf(e.composedPath()[1].children[1].outerText + '/true')
 
         if (completed > 0) {
             listOfTasks.splice(completed, 1)
@@ -404,7 +404,7 @@ function addEvent(input, btn, spanText) {
             listOfTasks.splice(notCompleted, 1)
         }
         localStorage.secundaryTasks = listOfTasks;
-        e.path[1].remove()
+        e.composedPath()[1].remove()
     })
 
 }
