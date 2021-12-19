@@ -1,0 +1,130 @@
+html {
+    padding: 0
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
+    box-sizing: border-box;
+    border: 15px solid #fff;
+}
+
+.container-final {
+    position: absolute;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    top: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 0;
+    border: 20px dotted #fff;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+:root {
+    --animation-fadeIn: fadeIn 2s ease-in-out 5s backwards;
+    --animation-lightPulse: pulse 2s ease-in-out 7s infinite alternate;
+    --animation-zoomout: zoomout 1s ease-in-out 7s forwards;
+}
+
+svg {
+    width: 50%;
+    animation: var(--animation-zoomout);
+}
+
+.display-none {
+    display: none;
+}
+
+.shadow {
+    filter: blur(3rem);
+    position: absolute;
+    z-index: -1;
+    width: 45%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    animation: var(--animation-fadeIn), var(--animation-lightPulse), var(--animation-zoomout);
+}
+
+
+.inner-shadow {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(245, 130, 130);
+    clip-path: polygon(0 0,
+            55% 0,
+            55% 70%,
+            100% 70%,
+            100% 100%,
+            30% 100%,
+            30% 40%,
+            0 40%);
+}
+
+.audioBtn {
+    width: 10rem;
+    height: 10rem;
+    border: none;
+    border-radius: 20rem;
+    background-color: #fff;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.audioBtn:hover {
+    opacity: .9;
+}
+
+.audioBtn:focus {
+    box-shadow: 0 0 50px 5px inset rgb(245, 130, 130);
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1;
+        filter: blur(2rem);
+    }
+
+    to {
+        opacity: .8;
+        filter: blur(4rem);
+    }
+}
+
+@keyframes zoomout {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(.5) translate(0, -50vh);
+    }
+}
