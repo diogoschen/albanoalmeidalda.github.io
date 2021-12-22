@@ -1,46 +1,149 @@
-html {
-    padding: 0
-}
-
+html,
 body {
     padding: 0;
     margin: 0;
     width: 100vw;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
     box-sizing: border-box;
-    border: 15px solid #fff;
+    font-family: sans-serif;
     box-shadow: 0 -50px 100px 10px inset rgb(51, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    border: none;
+}
+
+.container {
+    position: absolute;
+    min-width: 800px;
+    width: 50vh;
+    aspect-ratio: 1/1;
+    transition: opacity 2s;
+    transform-origin: 0% 100%;
+    overflow: hidden;
+    border: 15px solid #fff;
+    opacity: 1;
+    background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
+    box-shadow: 0 -50px 100px 10px inset rgb(51, 0, 0);
+    box-shadow: 0 0 100px 10px rgb(51, 0, 0);
+}
+
+.container-1 {
+    z-index: 3;
+}
+
+.container-2 {
+    z-index: 2;
 }
 
 .container-final {
+    z-index: 1;
+}
+
+.container-animation {
+    animation: flip 2s forwards;
+}
+
+.inner {
     position: absolute;
-    left: -12px;
-    right: -12px;
-    bottom: -12px;
-    top: -12px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 0;
-    border: 20px dotted #fff;
+    flex-direction: column;
 }
 
-.message {
+.container p {
+    color: #fff;
+    font-size: 4rem;
+    padding: 3rem;
+    line-height: 4.2rem;
+}
+
+button {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    flex-direction: column;
+}
+
+.next {
+    position: absolute;
+    bottom: 15%;
+    left: calc(50% - 2.5vw);
+    border-radius: 10vh;
+    max-width: 50px;
+    width: 5%;
+    aspect-ratio: 1/1;
+    border: 0;
+    cursor: pointer;
+    z-index: 1000;
+    background: none;
+}
+
+.next:hover img {
+    animation: movenext .5s forwards;
+}
+
+@keyframes movenext {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(50%, 0);
+    }
+
+    90% {
+        transform: translate(40%, 0);
+    }
+
+    100% {
+        transform: translate(50%, 0);
+    }
+}
+
+button::before {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10vh;
+    transition: 0.25s;
+    z-index: -1;
+    box-shadow: 0 0 20px 1px rgb(255, 255, 255);
+}
+
+button:hover::before {
+    content: '';
+    display: block;
+    background-color: #fff;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10vh;
+    filter: blur(.5rem);
 }
 
 :root {
     --animation-fadeIn: fadeIn 2s ease-in-out 5s backwards;
     --animation-lightPulse: pulse 2s ease-in-out 7s infinite alternate;
-    --animation-zoomout: zoomout 1s ease-in-out 7s forwards;
+    --animation-zoomout: zoomout-translate-names 1s ease-in-out 7s forwards;
+    --animation-moveBtn: moveBtn 2s cubic-bezier(0.76, -0.09, 0, 1.04) forwards;
 }
 
 svg {
@@ -53,11 +156,11 @@ svg {
 }
 
 .shadow {
-    filter: blur(3rem);
+    filter: blur(4rem);
     position: absolute;
     z-index: -1;
-    width: 45%;
-    height: 80%;
+    width: 145%;
+    height: 90%;
     display: flex;
     align-items: center;
     animation: var(--animation-fadeIn), var(--animation-lightPulse), var(--animation-zoomout);
@@ -70,8 +173,9 @@ svg {
     background-color: rgb(245, 130, 130);
     clip-path: polygon(0 0,
             55% 0,
-            55% 70%,
-            100% 70%,
+            55% 30%,
+            65% 30%, 55% 60%,
+            100% 60%,
             100% 100%,
             30% 100%,
             30% 40%,
@@ -79,48 +183,76 @@ svg {
 }
 
 .audioBtn {
-    width: 10rem;
-    height: 10rem;
+    width: 10%;
+    height: 10%;
     border: none;
     border-radius: 20rem;
-    background-color: #fff;
     transition: .25s;
     cursor: pointer;
+    position: absolute;
+    bottom: 45%;
+    right: 45%;
+    background-color: transparent;
+    z-index: 0;
 }
 
-.audioBtn:hover {
-    opacity: .9;
+button img {
+    width: 70%;
+    transition: .5s;
 }
 
-.audioBtn:focus {
-    box-shadow: 0 0 50px 5px inset rgb(245, 130, 130);
+
+.audioBtn img:nth-of-type(2) {
+    opacity: 0;
+    position: absolute;
 }
 
+.audioAnimation {
+    animation: var(--animation-moveBtn);
+}
+
+
+
+@keyframes flip {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-90deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(-90deg);
+    }
+}
 
 
 @keyframes fadeIn {
-    from {
+    0% {
         opacity: 0;
     }
 
-    to {
+    100% {
         opacity: 1;
     }
 }
 
 @keyframes pulse {
-    from {
-        opacity: 1;
-        filter: blur(2rem);
+    0% {
+        transform: scale(1);
+        opacity: .8;
     }
 
-    to {
-        opacity: .8;
-        filter: blur(4rem);
+    100% {
+        opacity: 1;
+        transform: scale(.8);
     }
+
 }
 
-@keyframes zoomout {
+@keyframes zoomout-translate-names {
     from {
         transform: scale(1);
     }
@@ -128,4 +260,58 @@ svg {
     to {
         transform: scale(.5) translate(0, -50vh);
     }
+}
+
+@keyframes moveBtn {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(.5);
+        bottom: 3vh;
+        right: 3vw;
+    }
+}
+
+
+
+.frame {
+    width: 100vw;
+    height: 100vh;
+}
+
+.frame section {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+}
+
+.frame-right {
+    top: 0;
+    right: -12px;
+    flex-direction: column;
+}
+
+.frame-left {
+    top: 0;
+    left: -12px;
+    flex-direction: column;
+}
+
+.frame-top {
+    top: -12px;
+}
+
+
+.frame-bottom {
+    bottom: -12px;
+}
+
+
+.frame div {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 30px;
 }
