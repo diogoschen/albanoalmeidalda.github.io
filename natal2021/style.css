@@ -211,7 +211,7 @@ svg {
 
 .audioBtn {
     width: 10%;
-    height: 10%;
+    aspect-ratio: 1/1;
     border: none;
     border-radius: 20rem;
     transition: .25s;
@@ -360,7 +360,9 @@ button img {
 
 @media (max-width: 500px) {
     .container {
-        min-width: 90vw;
+        min-width: 80vw;
+        max-width: 90vw;
+        aspect-ratio: 1/1.5;
         border: 2vw solid #fff;
     }
 
@@ -407,6 +409,12 @@ button img {
     button.next img {
         width: 200%;
         transition: .5s;
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 }
