@@ -5,7 +5,7 @@ body {
     width: 100vw;
     height: 100vh;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
     background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
     box-sizing: border-box;
     font-family: sans-serif;
@@ -19,10 +19,21 @@ html {
     border: none;
 }
 
+.wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 2000px;
+}
+
 .container {
     position: absolute;
     min-width: 800px;
     width: 50vh;
+    min-height: 50vh;
     aspect-ratio: 1/1;
     transition: opacity 2s;
     transform-origin: 0% 100%;
@@ -32,6 +43,11 @@ html {
     background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
     box-shadow: 0 -50px 100px 10px inset rgb(51, 0, 0);
     box-shadow: 0 0 100px 10px rgb(51, 0, 0);
+    /* perspective: 10000px; */
+    /* transform: translateZ(0px); */
+    --svg-width: calc(50%);
+    --svg-height: calc(50%);
+    z-index: 0;
 }
 
 .container-1 {
@@ -48,26 +64,31 @@ html {
 
 .container-animation {
     animation: flip 2s forwards;
+    backface-visibility: visible;
 }
 
 .inner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    /* transform-style: preserve-3d; */
+    position: absolute;
+    perspective-origin: bottom left;
+    z-index: 10;
+    /* transform: rotateY(-10deg) translateZ(450px); */
 }
 
-.container p {
+
+.inner p {
     color: #fff;
     font-size: 4rem;
     padding: 3rem;
     line-height: 4.2rem;
+    /* transform: rotateY(0) translateZ(450px); */
 }
 
 button {
@@ -148,22 +169,28 @@ button:hover::before {
 
 svg {
     width: 50%;
-    animation: var(--animation-zoomout);
 }
 
 .display-none {
     display: none;
 }
 
+.message {
+    animation: var(--animation-zoomout);
+}
+
 .shadow {
     filter: blur(4rem);
     position: absolute;
     z-index: -1;
-    width: 145%;
-    height: 90%;
+    width: 50%;
+    height: 40%;
+    top: 50%;
+    margin-top: -20%;
+    /* outline: 1px solid white; */
     display: flex;
     align-items: center;
-    animation: var(--animation-fadeIn), var(--animation-lightPulse), var(--animation-zoomout);
+    animation: var(--animation-fadeIn), var(--animation-lightPulse);
 }
 
 
@@ -197,7 +224,7 @@ svg {
 }
 
 button img {
-    width: 70%;
+    width: 100%;
     transition: .5s;
 }
 
@@ -215,16 +242,18 @@ button img {
 
 @keyframes flip {
     0% {
-        transform: rotate(0deg);
+        z-index: 1000;
+        transform: rotateY(0deg);
     }
 
     50% {
-        transform: rotate(-90deg);
+        z-index: 1000;
+        transform: rotateY(-100deg);
     }
 
     100% {
-        opacity: 0;
-        transform: rotate(-90deg);
+        z-index: 1000;
+        transform: rotateY(-100deg);
     }
 }
 
@@ -258,7 +287,7 @@ button img {
     }
 
     to {
-        transform: scale(.5) translate(0, -50vh);
+        transform: scale(.5) translate(0, -70%);
     }
 }
 
@@ -277,8 +306,13 @@ button img {
 
 
 .frame {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .frame section {
@@ -314,4 +348,65 @@ button img {
     height: 20px;
     background-color: #fff;
     border-radius: 30px;
+}
+
+#scene {
+    position: absolute;
+    bottom: 0;
+    right: -100px;
+    z-index: 0;
+    width: 35vw;
+}
+
+@media (max-width: 500px) {
+    .container {
+        min-width: 90vw;
+        border: 2vw solid #fff;
+    }
+
+    .inner p {
+        font-size: 2rem;
+        line-height: 2.2rem;
+    }
+
+    .frame {
+        --dist-frame: -7px;
+    }
+
+    .frame section {
+        gap: 5px;
+    }
+
+    .frame div {
+        width: 10px;
+        height: 10px;
+    }
+
+    .frame-right {
+        right: var(--dist-frame);
+    }
+
+    .frame-left {
+        left: var(--dist-frame);
+    }
+
+    .frame-top {
+        top: var(--dist-frame);
+    }
+
+
+    .frame-bottom {
+        bottom: var(--dist-frame);
+    }
+
+    button.next {
+        width: 2rem;
+        bottom: 30vh;
+    }
+
+    button.next img {
+        width: 200%;
+        transition: .5s;
+    }
+
 }
