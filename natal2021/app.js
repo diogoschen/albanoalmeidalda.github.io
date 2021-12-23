@@ -34,6 +34,7 @@ next.addEventListener('click', () => {
     if (nextClick === 3) {
         next.style.opacity = 0;
         timeDisappear(next)
+        timeDisappear(containers[nextClick], 'on')
     } else {
         containers[nextClick].children[0].classList.remove('display-none')
     }
