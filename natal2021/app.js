@@ -21,7 +21,7 @@ containers.forEach(container => {
 
 })
 containers[0].style.opacity = 1;
-const loadingTime = 000
+const loadingTime = 9000
 timeDisappear(containers[0].children[0], 'on', loadingTime)
 
 next.addEventListener('click', () => {
