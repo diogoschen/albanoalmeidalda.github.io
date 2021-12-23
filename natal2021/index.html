@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Natal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="snowfall.css">
     <!-- <link rel="stylesheet" href="snow.css"> -->
     <link rel="stylesheet" href="lettering.css">
@@ -15,26 +18,95 @@
 
 <body>
     <div class="wrapper">
-
-        <!-- <div class="loader">
-            <div id='candy'>
-                <div id='candy-loader'></div>
+        <div class="decoration">
+            <!-- <img src="img/ball2.svg" alt="">
+            <img src="img/star.svg" alt="">
+            <img src="img/ball1.svg" alt="">
+            <img src="img/ball4.svg" alt="">
+            <img src="img/ball2.svg" alt="">
+            <img src="img/ball3.svg" alt=""> -->
+            <div class="rope">
+                <img src="img/star.svg" alt="">
             </div>
+
+            <div class="rope">
+                <img src="img/ball2.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball1.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball3.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball4.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball2.svg" alt="">
+            </div>
+
+            <div class="rope">
+                <img src="img/star.svg" alt="">
+            </div>
+
+            <div class="rope">
+                <img src="img/ball2.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball1.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball3.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball4.svg" alt="">
+            </div>
+            <div class="rope">
+                <img src="img/ball2.svg" alt="">
+            </div>
+            <!--             
+            <div class="star">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+                <img src="img/star.svg" alt="">
+            </div> -->
+        </div>
+        <!-- <div class="loader">
+        <div id='candy'>
+            <div id='candy-loader'></div>
+        </div>
         </div> -->
 
         <div class="container container-1">
-            <div class="inner">
-                <p>Parabéns<br>por terem<br>resolvido<br>o puzzle</p>
+            <div class="inner display-none">
+                <p>Favor conectar</p>
+                <p> um portátil</p>
+                <p>à televisão</p>
             </div>
-            <div class="back"></div>
+
         </div>
 
         <div class="container container-2">
-            <div class="inner">
-                <p>Liguem um portátil<br> à televisão</p>
+            <div class="inner display-none">
+                <p>Finalmente</p>
+                <p>resolveram</p>
+                <p>o puzzle!</p>
+                <p>Parabéns!</p>
             </div>
-            <div class="back"></div>
+            <div id="tsparticles"></div>
         </div>
+
+        <div class="container">
+            <div class="inner display-none">
+                <input type="text">teste
+            </div>
+        </div>
+
 
         <div class="container container-3">
             <div class="inner message display-none">
@@ -60,12 +132,15 @@
             <button class="audioBtn"><img class="play" src="img/play.svg" alt=""><img class="pause" src="img/pause.svg" alt=""></button>
         </div>
 
+
         <button class="next"><img src="img/next.svg" alt=""></button>
-        <canvas id='scene' width='500px' height='500px' style='background:transparent; display: block; margin: 0 auto'></canvas>
+        <!-- <canvas id='scene' width='500px' height='500px' style='background:transparent; display: block; margin: 0 auto'></canvas> -->
         <audio src="music/christmas-story-12075.mp3" type="audio/mpeg" repeat>
         <script src="app.js"></script>
-        <script src="tree.js"></script>
-</div>
+        <!-- <script src="tree.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.30.3/tsparticles.min.js"></script>
+        <script src="confetti.js"></script>
+    </div>
 </body>
 
 </html>

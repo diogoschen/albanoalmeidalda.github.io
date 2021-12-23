@@ -8,7 +8,7 @@ body {
     overflow: hidden;
     background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Noto Sans Mono', monospace;
     box-shadow: 0 -50px 100px 10px inset rgb(51, 0, 0);
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000px;
+    perspective: 5000px;
 }
 
 .container {
@@ -37,7 +37,6 @@ html {
     aspect-ratio: 1/1;
     transition: opacity 2s;
     transform-origin: 0% 100%;
-    overflow: hidden;
     border: 15px solid #fff;
     opacity: 1;
     background: linear-gradient(rgb(150, 20, 20), rgb(51, 0, 0));
@@ -48,7 +47,10 @@ html {
     --svg-width: calc(50%);
     --svg-height: calc(50%);
     z-index: 0;
+    transform-style: preserve-3d;
+    /* transform: rotateY(-40deg); */
 }
+
 
 .container-1 {
     z-index: 3;
@@ -58,8 +60,9 @@ html {
     z-index: 2;
 }
 
-.container-final {
+.container-3 {
     z-index: 1;
+    overflow: hidden;
 }
 
 .container-animation {
@@ -75,20 +78,115 @@ html {
     align-items: center;
     text-align: center;
     flex-direction: column;
-    /* transform-style: preserve-3d; */
-    position: absolute;
-    perspective-origin: bottom left;
     z-index: 10;
-    /* transform: rotateY(-10deg) translateZ(450px); */
+    transition: 5s;
+    transform: translateZ(150px);
 }
 
 
 .inner p {
     color: #fff;
     font-size: 4rem;
-    padding: 3rem;
-    line-height: 4.2rem;
-    /* transform: rotateY(0) translateZ(450px); */
+    overflow: hidden;
+    border-right: .1em solid transparent;
+    white-space: nowrap;
+    margin: 0 auto;
+    flex-grow: 0;
+    --pwidth: calc(100%);
+}
+
+.container-2 p:nth-child(1) {
+    --n-characters: 10;
+    --position: 1;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) 0s backwards,
+        blink-caret .4s step-end calc(var(--n-characters) * .5) forwards;
+}
+
+.container-2 p:nth-child(2) {
+    --n-characters: 10;
+    --position: 2;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) calc((var(--position) - 1) * 1.8s) backwards,
+        blink-caret calc(var(--n-characters) * .2s) step-end 1 calc((var(--position) - 1) * 1.8s) forwards;
+}
+
+.container-2 p:nth-child(3) {
+    --n-characters: 9;
+    --position: 3;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) calc((var(--position) - 1) * 1.8s) backwards,
+        blink-caret calc(var(--n-characters) * .2s) step-end 1 calc((var(--position) - 1) * 1.8s) forwards;
+}
+
+.container-2 p:nth-child(4) {
+    --n-characters: 9;
+    --position: 4;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) calc((var(--position) - 1) * 2.1s) backwards,
+        blink-caret calc(var(--n-characters) * .2s) step-end 1 calc((var(--position) - 1) * 1.8s) forwards,
+        blink-end 1s step-end calc((var(--position)) * 2.1s) infinite;
+}
+
+.container-1 p:nth-child(1) {
+    --n-characters: 14;
+    --position: 1;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) 0s backwards,
+        blink-caret .4s step-end calc(var(--n-characters) * .5) forwards;
+}
+
+.container-1 p:nth-child(2) {
+    --n-characters: 11;
+    --position: 2;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) 2.8s backwards,
+        blink-caret calc(var(--n-characters) * .2s) step-end 1 2.8s forwards;
+}
+
+
+.container-1 p:nth-child(3) {
+    --n-characters: 11;
+    --position: 3;
+    animation:
+        typing calc(var(--n-characters) * .2s) steps(var(--n-characters), end) 5s backwards,
+        blink-caret calc(var(--n-characters) * .2s) step-end 1 5s forwards,
+        blink-end 1s step-end 5s infinite;
+}
+
+
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: calc(var(--n-characters) * 1ch);
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    0% {
+        border-color: orange
+    }
+
+    100% {
+        border-color: transparent
+    }
+}
+
+@keyframes blink-end {
+
+    from, to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange
+    }
 }
 
 button {
@@ -112,15 +210,11 @@ button {
 }
 
 .next:hover img {
-    animation: movenext .5s forwards;
+    animation: movenext 1s infinite alternate forwards;
 }
 
 @keyframes movenext {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    50% {
+    80% {
         transform: translate(50%, 0);
     }
 
@@ -358,10 +452,36 @@ button img {
     width: 35vw;
 }
 
-@media (max-width: 500px) {
+#tsparticles {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    transform: translateZ(1px);
+}
+
+.confetti-animation {
+    animation: popup .1s linear 8s forwards;
+}
+
+@keyframes popup {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-aspect-ratio:10/9) {
     .container {
         min-width: 80vw;
         max-width: 90vw;
+        max-height: 90vh;
         aspect-ratio: 1/1.5;
         border: 2vw solid #fff;
     }
@@ -417,4 +537,284 @@ button img {
         align-items: center;
     }
 
+}
+
+.decoration, .star {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    transform-style: preserve-3d;
+    --rotation-start: 0deg;
+    --rotation-step: 22.5deg;
+    --rotation-time: 5s;
+}
+
+
+.decoration>img {
+    max-width: 300px;
+    width: 5%;
+    position: fixed;
+    animation: swing 3s ease-in-out alternate infinite;
+    z-index: 1000000;
+    --rotation-self: 0deg;
+}
+
+.star img {
+    width: 100px;
+    bottom: 63vh;
+    right: 9vw;
+    display: none;
+}
+
+.star img:nth-of-type(1) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 0);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(2) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 1);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(3) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 2);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(4) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 3);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+
+.star img:nth-of-type(5) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 4);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(6) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 5);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(7) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 6);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+.star img:nth-of-type(8) {
+    --rotation: calc(var(--rotation-start) + var(--rotation-step) * 7);
+    transform: rotateY(var(--rotation));
+    animation: rotate var(--rotation-time) linear infinite;
+}
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(var(--rotation));
+    }
+
+    100% {
+        transform: rotateY(calc(var(--rotation) + 360deg));
+    }
+}
+
+.rope {
+    width: 10px;
+    height: 100%;
+    position: fixed;
+    animation: swing 3s ease-in-out alternate infinite;
+    border-right: .2vw dotted white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transform-origin: 0 -500%;
+}
+
+.rope img {
+    flex-shrink: 0;
+    margin-left: .2vw;
+}
+
+.rope:nth-of-type(1) {
+    top: -90%;
+    right: 12vw;
+    --rotation-self: -1.8deg;
+}
+
+.rope:nth-of-type(1) img {
+    width: 10vw;
+    margin-bottom: -10vw;
+}
+
+
+.rope:nth-of-type(2) {
+    top: -90%;
+    right: 8vw;
+    --rotation-self: -1.6deg;
+    z-index: -1;
+    animation-delay: -.7s;
+}
+
+.rope:nth-of-type(2) img {
+    width: 5vw;
+    margin-bottom: -5vw;
+}
+
+.rope:nth-of-type(3) {
+    top: -80%;
+    right: 20vw;
+    --rotation-self: -1deg;
+    z-index: 1;
+    animation-delay: -2s;
+}
+
+.rope:nth-of-type(3) img {
+    width: 13vw;
+    margin-bottom: -13vw;
+}
+
+.rope:nth-of-type(4) {
+    top: -35%;
+    right: 15vw;
+    --rotation-self: -1.8deg;
+    z-index: -1;
+    animation-delay: -1.5s;
+}
+
+.rope:nth-of-type(4) img {
+    width: 10vw;
+    margin-bottom: -10vw;
+}
+
+.rope:nth-of-type(5) {
+    top: -50%;
+    right: 20vw;
+    --rotation-self: -1.5deg;
+    z-index: -1;
+    animation-delay: -.1s;
+}
+
+.rope:nth-of-type(5) img {
+    width: 7vw;
+    margin-bottom: -7vw;
+}
+
+.rope:nth-of-type(6) {
+    top: -40%;
+    right: 5vw;
+    --rotation-self: -1.8deg;
+    z-index: -1;
+    animation-delay: -.5s;
+}
+
+.rope:nth-of-type(6) img {
+    width: 6vw;
+    margin-bottom: -6vw;
+}
+
+
+.rope:nth-of-type(7) {
+    top: -90%;
+    left: 12vw;
+    --rotation-self: -1.8deg;
+}
+
+.rope:nth-of-type(7) img {
+    width: 10vw;
+    margin-bottom: -10vw;
+}
+
+
+.rope:nth-of-type(8) {
+    top: -90%;
+    left: 8vw;
+    --rotation-self: -1.6deg;
+    z-index: -1;
+    animation-delay: -.7s;
+}
+
+.rope:nth-of-type(8) img {
+    width: 5vw;
+    margin-bottom: -5vw;
+}
+
+.rope:nth-of-type(9) {
+    top: -80%;
+    left: 20vw;
+    --rotation-self: -1deg;
+    z-index: 1;
+    animation-delay: -2s;
+}
+
+.rope:nth-of-type(9) img {
+    width: 13vw;
+    margin-bottom: -13vw;
+}
+
+.rope:nth-of-type(10) {
+    top: -35%;
+    left: 15vw;
+    --rotation-self: -1.8deg;
+    z-index: -1;
+    animation-delay: -1.5s;
+}
+
+.rope:nth-of-type(10) img {
+    width: 10vw;
+    margin-bottom: -10vw;
+}
+
+.rope:nth-of-type(11) {
+    top: -50%;
+    left: 20vw;
+    --rotation-self: -1.5deg;
+    z-index: -1;
+    animation-delay: -.1s;
+}
+
+.rope:nth-of-type(11) img {
+    width: 7vw;
+    margin-bottom: -7vw;
+}
+
+.rope:nth-of-type(12) {
+    top: -40%;
+    left: 5vw;
+    --rotation-self: -1.8deg;
+    z-index: -1;
+    animation-delay: -.5s;
+}
+
+.rope:nth-of-type(12) img {
+    width: 6vw;
+    margin-bottom: -6vw;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(calc(2deg + var(--rotation-self)));
+    }
+
+    100% {
+        transform: rotate(calc(-2deg - var(--rotation-self)));
+    }
+}
+
+@keyframes swingRope {
+    0% {
+        transform: translate(0, -100%) rotate(calc(2deg + var(--rotation-self)));
+    }
+
+    100% {
+        transform: translate(0, -100%) rotate(calc(-2deg - var(--rotation-self)));
+    }
 }
