@@ -640,7 +640,7 @@ button img {
 
 .rope img {
     flex-shrink: 0;
-    margin-left: .2vw;
+    margin-left: calc(.2vw + 10px);
 }
 
 .rope:nth-of-type(1) {
