@@ -1,0 +1,834 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .3);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 7px;
+}
+
+*::-webkit-scrollbar {
+    height: 13px;
+    width: 13px;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: all .25s;
+}
+
+.bodyChange {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all .25s;
+}
+
+h1 {
+    font-size: 3.4rem;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+}
+
+header svg {
+    width: 80px;
+    fill: #fff;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 0 auto 0;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* JANELA COM FORM DO NOME DO UTILIZADOR */
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid #fff;
+    text-align: center;
+    background: none;
+    color: #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+#nameForm, #nameInput, #nameForm label {
+    font-size: 3.3rem;
+}
+
+.nameWindow button {
+    background: rgb(0, 0, 0, .2);
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 100px;
+    font-size: .8rem;
+    padding: .7rem 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 0 auto;
+    color: #fff;
+}
+
+.nameWindow button:focus {
+    background: rgb(202, 202, 202, .15);
+    outline: none;
+}
+
+#nameForm label {
+    display: inline-block;
+    margin: 20px 0;
+}
+
+label {
+    color: #fff;
+}
+
+form {
+    margin: 0 auto;
+}
+
+#nameForm {
+    max-width: 600px;
+    width: 65%;
+}
+
+.nameWindow {
+    margin: auto;
+}
+
+.nameWindow, .mainWindow {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, .15);
+    background: rgba(0, 0, 0, .15);
+}
+
+.nameWindow, .mainWindow, header, .mainFocus, #focusForm {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s;
+}
+
+/* JANELA SECUNDÁRIA COM O "DESKTOP" DO UTILIZADOR */
+
+.mainWindow {
+    margin: auto 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    align-content: space-around;
+}
+
+#focusForm, #focusInput {
+    font-size: 2.18rem;
+}
+
+#focusForm {
+    width: 60%;
+}
+
+.greetings {
+    padding: 160px 0 0 0;
+    margin: auto auto;
+    color: #fff;
+}
+
+.clock {
+    font-size: 10rem;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    width: 100%;
+}
+
+/* MAIN TASK AREA */
+
+.focus {
+    margin: 0 0 auto 0;
+    position: relative;
+}
+
+.mainFocus {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: -10px;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.taskDay {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.taskLine {
+    display: inline-block;
+    font-size: 2.1rem;
+}
+
+.taskLine:focus-within .inputContainer,
+.taskLine:focus-within button,
+.taskLine:hover .inputContainer,
+.taskLine:hover button {
+    opacity: 1;
+}
+
+/* delete focus  */
+.taskLine button {
+    opacity: 0;
+    transition: all .25s;
+    position: relative;
+    font-size: 1rem;
+    top: -6px;
+}
+
+.taskLine button span {
+    position: relative;
+    top: .02rem;
+    left: .00001rem;
+}
+
+.removeBtn {
+    background: rgb(0, 0, 0, .2);
+    border: 2px solid #fff;
+    border-radius: 2px;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 0;
+    display: inline-block;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.task {
+    margin: 0 10px;
+}
+
+.taskLine .inputContainer:hover,
+.taskLine .inputContainer:focus-within,
+.taskLine .inputContainer:hover,
+.taskLine .inputContainer:focus-within {
+    background: rgba(255, 255, 255, .2);
+}
+
+.inputContainer {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.inputContainer,
+.inputSecundary {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all .25s;
+}
+
+.taskComplete {
+    opacity: .5;
+}
+
+.inputContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.inputSecundary input:checked~.checkmark:after,
+.inputContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+.inputSecundary .checkmark:after,
+.inputContainer .checkmark:after {
+    top: 3%;
+    left: 27%;
+    width: 23%;
+    height: 50%;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* QUOTE */
+
+.quote {
+    color: #fff;
+    margin: auto 0 20px 0;
+    width: 50%;
+    font-size: 1.2rem;
+    position: relative;
+    transition: all .25s;
+}
+
+.quote:focus-within .quoteText,
+.quote:hover .quoteText {
+    bottom: 30px;
+}
+
+.quote:focus-within .quoteText,
+.quote:hover .quoteAuthor {
+    /* bottom: 0; */
+    opacity: 1;
+}
+
+.quoteText {
+    width: 100%;
+    bottom: 0;
+}
+
+.quoteAuthor, .quoteText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: all .25s;
+}
+
+.quoteAuthor {
+    opacity: 0;
+    bottom: 10px;
+    font-size: .9rem;
+    color: rgb(192, 189, 189);
+}
+
+/* CORNERS */
+
+.up {
+    position: absolute;
+    top: 0;
+}
+
+.left {
+    position: absolute;
+    left: 0;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
+
+.down {
+    position: absolute;
+    bottom: 0;
+}
+
+/* METEROLOGIA */
+
+.weather {
+    color: #fff;
+    padding: 0px 20px 0 0;
+    text-align: right;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.weather:hover #locWeather {
+    opacity: 1;
+}
+
+#locWeather {
+    opacity: 0;
+    margin: -3px 0 0 0;
+    position: relative;
+    transition: all .25s;
+}
+
+#locWeather .searchIcon {
+    margin: -8px 0 0 0;
+    transition: all .25s;
+}
+
+#locWeather input {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0 0 0 25px;
+    height: 50px;
+}
+
+::placeholder {
+    color: #fff;
+}
+
+.weatherImg {
+    margin-top: 2px;
+    padding: 0;
+    width: 55px;
+}
+
+.weather::before {
+    display: block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    right: 88px;
+    top: 30px;
+    z-index: -1;
+    border-radius: 40px;
+    box-shadow: 0 0 30px 10px rgb(0, 0, 0);
+    content: '';
+}
+
+.weatherLoc {
+    margin: -10px 0 0 0;
+    padding: 0;
+    width: 100%;
+    font-size: .8rem;
+}
+
+/* LINKS */
+
+.links {
+    height: 60px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#searchForm {
+    width: 100%;
+    position: relative;
+}
+
+#searchForm:focus input,
+#searchForm:hover input {
+    opacity: 1;
+}
+
+#searchForm input {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0 0 0 25px;
+    opacity: 0;
+    height: 50px;
+    transition: all .25s;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 15px;
+    fill: #fff;
+    cursor: pointer;
+    transform: rotate(-15deg);
+    z-index: -1;
+}
+
+.links button {
+    display: inline;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 20px;
+    color: #fff;
+    background: none;
+    transition: all .25s;
+}
+
+
+.links button:focus,
+.links button:hover,
+.todo button:focus,
+.todo button:hover {
+    text-shadow: 0 0px 10px #000;
+}
+
+
+.inside::-webkit-scrollbar {
+    width: 0;
+}
+
+.linkList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: 15px 20px 0 20px;
+}
+
+.linkList svg {
+    padding-right: 15px;
+    width: 15px;
+    height: 15px;
+    fill: white;
+}
+
+.linkList li button {
+    padding: 2px 6px;
+    width: auto;
+    border-radius: 10px;
+    color: #333;
+    font-size: .8em;
+    display: inline-block;
+    background-color: #ffffff63;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.linkList {
+    width: 100%;
+    left: 0;
+    position: relative;
+    transition: all .25s;
+    flex-shrink: 0;
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.linkList button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 100%;
+}
+
+.linkInput {
+    width: 100%;
+    height: 0;
+    position: relative;
+    transition: all .25s;
+    left: 0;
+    top: 0;
+    flex-shrink: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.linkContainer {
+    position: absolute;
+    top: -500px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.75);
+    width: 250px;
+    margin-left: 10px;
+    border-radius: 4px;
+    transition: all .25s;
+    /* opacity: 0; */
+    box-sizing: border-box;
+}
+
+.inside {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.linkContainer::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    top: -5px;
+    left: 15px;
+    z-index: 1;
+    background: rgba(0, 0, 0, .75);
+    transform: rotate(45deg);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.linkContainer li {
+    padding: 10px 0;
+}
+
+.linkInput>button {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+#newLink input {
+    border-bottom: 1px solid #fff;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+#newLink button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    display: block;
+    margin: 30px -20px -20px -20px;
+    width: 250px;
+}
+
+.linkContainer a {
+    text-decoration: none;
+    opacity: 1;
+    font-size: inherit;
+    color: #fff;
+}
+
+.linkContainer a:focus, .linkContainer a:hover {
+    opacity: .5;
+}
+
+/* Todo list */
+
+.todo button:nth-child(1) {
+    background: none;
+    border: none;
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.todo ul {
+    width: 300px;
+    min-height: 30vh;
+    max-height: 80vh;
+    position: absolute;
+    border-radius: 5px;
+    bottom: -100vh;
+    right: 10px;
+    background: rgba(0, 0, 0, .75);
+    list-style: none;
+    padding: 10px;
+    text-align: left;
+    overflow-y: auto;
+    transition: all .25s;
+}
+
+
+.todo li {
+    padding: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.todo li>span {
+    text-align: left;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.todo form {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.todo input {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+    font-size: inherit;
+    height: 30px;
+    padding: 0 0 10px 0;
+}
+
+.todo .removeBtn {
+    width: 20px;
+    height: 20px;
+    font-size: .855rem;
+    padding-bottom: 2px;
+}
+
+
+.inputSecundary {
+    width: 18px;
+    height: 18px;
+}
+
+
+.inputSecundary input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.inputSecundary input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Settings */
+
+.settings button {
+    padding: 20px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.settings svg {
+    fill: #fff;
+    width: 18px;
+    transition: all .25s;
+    z-index: -1;
+    position: relative;
+}
+
+.settings button:focus svg, .settings button:hover svg {
+    transform: rotate(360deg);
+}
+
+.settingsBox {
+    position: absolute;
+    bottom: -100vh;
+    width: 200px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.75);
+    left: 10px;
+    border-radius: 5px;
+    text-align: left;
+    transition: all .25s;
+}
+
+.settingsBox>button {
+    border: 0;
+    padding: 10px;
+    margin-bottom: 5px;
+    background: none;
+    color: #fff;
+    font-size: inherit;
+    opacity: 1;
+}
+
+.settingsBox>button:focus,
+.settingsBox>button:hover {
+    opacity: .5;
+}
+
+@media(max-height:480px) {
+    .clock {
+        display: none;
+    }
+
+    .greetings {
+        padding: 50px 0 0 0;
+    }
+
+}
+
+@media (max-width:750px) {
+    .clock {
+        font-size: 8rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .greetings {
+        padding-bottom: 10vh;
+        margin: -10vh 0 0 0;
+    }
+
+    .focus {
+        margin: 0;
+    }
+
+    .quote {
+        width: 65%;
+    }
+
+    .links {
+        width: 70%;
+    }
+
+    #nameForm label {
+        font-size: 2.9rem;
+    }
+}
